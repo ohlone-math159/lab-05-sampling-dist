@@ -9,6 +9,14 @@ output:
     toc: true
     toc_float: true
 ---
+```{r, include=FALSE}
+# Before Run Document, enter the followinf the console
+# install.packages("devtools")
+# library(devtools)
+# install_github("OpenIntroStat/openintro-r-package")
+```
+
+
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
@@ -17,6 +25,11 @@ library(openintro)
 library(infer)
 data(ames)
 ```
+
+
+
+
+
 
 In this lab, you will investigate the ways in which the statistics from a random 
 sample of data can serve as point estimates for population parameters. We're 
@@ -72,7 +85,7 @@ You can explore the distribution of areas of homes in the population of home
 sales visually and with summary statistics. Let's first create a visualization,
 a histogram:
 
-```{r area-hist}
+```{r, include=TRUE}
 ggplot(data = ames, aes(x = area)) +
   geom_histogram(binwidth = 250)
 ```
@@ -88,13 +101,14 @@ in the distribution of `x`. Finding these values is useful for describing the
 distribution, as you can use them for descriptions like *"the middle 50% of the 
 homes have areas between such and such square feet"*.
 
-```{r area-stats}
-ames %>%
+```{r}
+ames_sum <- ames %>%
   summarise(mu = mean(area), pop_med = median(area), 
             sigma = sd(area), pop_iqr = IQR(area),
             pop_min = min(area), pop_max = max(area),
             pop_q1 = quantile(area, 0.25),  # first quartile, 25th percentile
             pop_q3 = quantile(area, 0.75))  # third quartile, 75th percentile
+ames_sum
 ```
 
 1.  Describe this population distribution using a visualization and the summary
