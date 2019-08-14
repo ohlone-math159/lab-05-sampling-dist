@@ -10,10 +10,12 @@ output:
     toc_float: true
 ---
 ```{r, include=FALSE}
-# Before Run Document, enter the followinf the console
+# Before Run/Knit Document, enter the following the console
 # install.packages("devtools")
 # library(devtools)
 # install_github("OpenIntroStat/openintro-r-package")
+# install.packages("infer")
+# install.packages("tidyverse")
 ```
 
 
@@ -23,7 +25,6 @@ knitr::opts_chunk$set(eval = FALSE)
 library(tidyverse)
 library(openintro)
 library(infer)
-data(ames)
 ```
 
 
